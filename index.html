@@ -7,6 +7,9 @@
     document.addEventListener('readystatechange', () => {
       if(document.readyState==='complete'){
         alert("dashboard data players ready");
+        const response = await fetch("https://grappe.io/data/api/62e10a665e5d5200115a5410-http-check-DP");
+        const data = await response.json();
+        console.log(data);
       }
      });
   </script>
