@@ -3,25 +3,10 @@
 <head>
   <meta charset="utf-8">
   <title>dashboard data players</title>
-  <script>
-    const start = async ()=>{
-        console.log("start");
-        const response = await fetch("https://grappe.io/data/api/62e10a665e5d5200115a5410-http-check-DP");
-        const data = await response.json();
-        console.log(data);
-    }
-    
-    document.addEventListener('readystatechange', () => {
-      if(document.readyState==='complete'){
-        alert("dashboard data players ready");
-        start();
-      }
-     });
-  </script>
+  <link rel="stylesheet" href="style.css">
+  <script src="script.js"></script>
 </head>
 <body>
-  <h1>
-    dashboard data players
-  </h1>
+  <div id="table"></div>
 </body>
 </html>
