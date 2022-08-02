@@ -1,5 +1,5 @@
 const start = async ()=>{
-    let myTable = document.querySelector('#table');
+    let myListe = document.querySelector('#liste');
 
     const response = await fetch("https://grappe.io/data/api/62e10a665e5d5200115a5410-http-check-DP");
     const serverHttpsStatus = await response.json();
@@ -20,27 +20,15 @@ const start = async ()=>{
       return acc;
     }, []);
 
-    let headers = ['Project', 'Service 1', 'Service 2', 'service 3']
-    let table = document.createElement('table');
-    let headerRow = document.createElement('tr');
-
-    headers.forEach(headerText => {
-        let header= document.createElement('th');
-        let textNode = document.createTextNode(headerText);
-        header.appendChild(textNode);
-        headerRow.appendChild(header);
-    })
-    
-    table.appendChild(headerRow);
+    let liste = document.createElement('ul');
 
     result.forEach(server => {
-        let row = document.createElement('tr');
+        let row = document.createElement('ul');
 
         Object.values(server).forEach(v => {
             if ( typeof v === 'object' && v !== null) {
-                console.log(v);
                 v.forEach(element => {
-                    let cell= document.createElement('td');
+                    let cell= document.createElement('ul');
                     if ( element.http === 200) {
                         cell.style.color="#207C17";
                     } else { cell.style.color="#E51919"; }
@@ -49,17 +37,17 @@ const start = async ()=>{
                     row.appendChild(cell);
                 });
             } else{
-                let cell= document.createElement('td');
+                let cell= document.createElement('li');
                 let textNode = document.createTextNode(v);
                 cell.appendChild(textNode);
                 row.appendChild(cell);
             }
         })
 
-        table.appendChild(row);
+        liste.appendChild(row);
     })
 
-    myTable.appendChild(table);
+    myListe.appendChild(liste);
   }
   
   document.addEventListener('readystatechange', () => {
